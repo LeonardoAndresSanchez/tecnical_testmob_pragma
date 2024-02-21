@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:tecnical_testmob_pragma/models/pets.dart';
+import 'package:tecnical_testmob_pragma/pages/home/widgets/search_bar.dart';
 import 'package:tecnical_testmob_pragma/providers/pet_provider_service.dart';
 
-import 'widgets/itemList.dart';
+import 'widgets/item_list.dart';
 
 enum TypeView { grid, list }
 
@@ -14,11 +16,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-int _crossAxisCount = 2;
-double _aspectRatio = 1.7;
 TypeView _typeView = TypeView.grid;
 List<Pet>? pets = [];
 bool? isGrid;
+TextEditingController _textEditingController = TextEditingController();
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -41,82 +42,33 @@ class _HomePageState extends State<HomePage> {
       }
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Frontend Engenier Test'),
+          title: const Text('Pragma test'),
+          centerTitle: true,
           actions: const [],
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.grey[200]),
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: Icon(_typeView == TypeView.list
-                        ? Icons.view_list
-                        : Icons.grid_on),
-                    onPressed: () {
-                      if (_typeView == TypeView.list) {
-                        _crossAxisCount = 2;
-                        _aspectRatio = 1.7;
-                        _typeView = TypeView.grid;
-                      } else {
-                        _crossAxisCount = 1;
-                        _aspectRatio = 3;
-                        _typeView = TypeView.list;
-                      }
-                      setState(() {});
-                    },
-                  ),
-                  Text(
-                    _typeView == TypeView.list ? 'ListView' : 'Gridview',
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  const Spacer(),
-                  Switch(
-                      value: isGrid!,
-                      onChanged: (value) {
-                        isGrid = value;
-                        if (_typeView == TypeView.list) {
-                          _crossAxisCount = 2;
-                          _aspectRatio = 1.7;
-                          _typeView = TypeView.grid;
-
-                          setState(() {});
-                        } else {
-                          _crossAxisCount = 1;
-                          _aspectRatio = 3;
-                          _typeView = TypeView.list;
-
-                          setState(() {});
-                        }
-                      })
-                ],
+        body: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+              child: SearchInput(
+                textController: _textEditingController,
+                hintText: 'Search...',
               ),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: _crossAxisCount,
-                  childAspectRatio: _aspectRatio,
-                  children: pets!.map((u) {
-                    return GestureDetector(
-                      child: ItemGrid(
-                        data: u,
-                        typeView: _typeView,
-                      ),
-                      // onTap: () => Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => UniversityDetail(
-                      //             u: u,
-                      //           )),
-                      // ),
-                    );
-                  }).toList(),
-                ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                itemCount: pets!.length,
+                itemBuilder: (BuildContext context, int i) {
+                  return ItemList(
+                    data: pets![i],
+                    typeView: _typeView,
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
     });

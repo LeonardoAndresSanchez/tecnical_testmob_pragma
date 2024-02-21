@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:tecnical_testmob_pragma/abstract/pet_service_abs.dart';
 import 'package:tecnical_testmob_pragma/models/pets.dart';
