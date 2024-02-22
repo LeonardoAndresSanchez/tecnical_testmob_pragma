@@ -16,8 +16,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-TypeView _typeView = TypeView.grid;
-
 TextEditingController _textEditingController = TextEditingController();
 String urlImg = '';
 
