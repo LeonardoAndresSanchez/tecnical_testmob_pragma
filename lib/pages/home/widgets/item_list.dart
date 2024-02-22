@@ -54,12 +54,16 @@ class _ItemListState extends State<ItemList> {
           Hero(
             tag: widget.data.name!,
             transitionOnUserGestures: true,
-            child: SizedBox(
+            child: Container(
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.25,
-              child: const Image(
-                image: AssetImage('assets/cat.png'),
-              ),
+              child: Image(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    "https://cdn2.thecatapi.com/images/${widget.data.referenceImageId}.jpg",
+                  )),
             ),
           ),
           const SizedBox(

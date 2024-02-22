@@ -33,8 +33,11 @@ class _DetailPageState extends State<DetailPage> {
                 child: SizedBox(
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.45,
-                  child: const Image(
-                    image: AssetImage('assets/cat.png'),
+                  child: Image(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      "https://cdn2.thecatapi.com/images/${widget.pet!.referenceImageId}.jpg",
+                    ),
                   ),
                 ),
               ),
