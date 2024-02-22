@@ -21,6 +21,7 @@ Pet _$PetFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Pet {
   String? get id => throw _privateConstructorUsedError;
+  Weight? get weight => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get cfaUrl => throw _privateConstructorUsedError;
   String? get vetstreetUrl => throw _privateConstructorUsedError;
@@ -69,6 +70,7 @@ abstract class $PetCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
+      Weight? weight,
       String? name,
       String? cfaUrl,
       String? vetstreetUrl,
@@ -104,6 +106,8 @@ abstract class $PetCopyWith<$Res> {
       String? wikipediaUrl,
       int? hypoallergenic,
       String? referenceImageId});
+
+  $WeightCopyWith<$Res>? get weight;
 }
 
 /// @nodoc
@@ -119,6 +123,7 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? weight = freezed,
     Object? name = freezed,
     Object? cfaUrl = freezed,
     Object? vetstreetUrl = freezed,
@@ -160,6 +165,10 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Weight?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -302,6 +311,18 @@ class _$PetCopyWithImpl<$Res, $Val extends Pet> implements $PetCopyWith<$Res> {
               as String?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WeightCopyWith<$Res>? get weight {
+    if (_value.weight == null) {
+      return null;
+    }
+
+    return $WeightCopyWith<$Res>(_value.weight!, (value) {
+      return _then(_value.copyWith(weight: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -312,6 +333,7 @@ abstract class _$$PetImplCopyWith<$Res> implements $PetCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
+      Weight? weight,
       String? name,
       String? cfaUrl,
       String? vetstreetUrl,
@@ -347,6 +369,9 @@ abstract class _$$PetImplCopyWith<$Res> implements $PetCopyWith<$Res> {
       String? wikipediaUrl,
       int? hypoallergenic,
       String? referenceImageId});
+
+  @override
+  $WeightCopyWith<$Res>? get weight;
 }
 
 /// @nodoc
@@ -359,6 +384,7 @@ class __$$PetImplCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$PetImpl>
   @override
   $Res call({
     Object? id = freezed,
+    Object? weight = freezed,
     Object? name = freezed,
     Object? cfaUrl = freezed,
     Object? vetstreetUrl = freezed,
@@ -400,6 +426,10 @@ class __$$PetImplCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$PetImpl>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      weight: freezed == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Weight?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -550,6 +580,7 @@ class __$$PetImplCopyWithImpl<$Res> extends _$PetCopyWithImpl<$Res, _$PetImpl>
 class _$PetImpl implements _Pet {
   const _$PetImpl(
       {this.id,
+      this.weight,
       this.name,
       this.cfaUrl,
       this.vetstreetUrl,
@@ -591,6 +622,8 @@ class _$PetImpl implements _Pet {
 
   @override
   final String? id;
+  @override
+  final Weight? weight;
   @override
   final String? name;
   @override
@@ -664,7 +697,7 @@ class _$PetImpl implements _Pet {
 
   @override
   String toString() {
-    return 'Pet(id: $id, name: $name, cfaUrl: $cfaUrl, vetstreetUrl: $vetstreetUrl, vcahospitalsUrl: $vcahospitalsUrl, temperament: $temperament, origin: $origin, countryCodes: $countryCodes, countryCode: $countryCode, description: $description, lifeSpan: $lifeSpan, indoor: $indoor, lap: $lap, altNames: $altNames, adaptability: $adaptability, affectionLevel: $affectionLevel, childFriendly: $childFriendly, dogFriendly: $dogFriendly, energyLevel: $energyLevel, grooming: $grooming, healthIssues: $healthIssues, intelligence: $intelligence, sheddingLevel: $sheddingLevel, socialNeeds: $socialNeeds, strangerFriendly: $strangerFriendly, vocalisation: $vocalisation, experimental: $experimental, hairless: $hairless, natural: $natural, rare: $rare, rex: $rex, suppressedTail: $suppressedTail, shortLegs: $shortLegs, wikipediaUrl: $wikipediaUrl, hypoallergenic: $hypoallergenic, referenceImageId: $referenceImageId)';
+    return 'Pet(id: $id, weight: $weight, name: $name, cfaUrl: $cfaUrl, vetstreetUrl: $vetstreetUrl, vcahospitalsUrl: $vcahospitalsUrl, temperament: $temperament, origin: $origin, countryCodes: $countryCodes, countryCode: $countryCode, description: $description, lifeSpan: $lifeSpan, indoor: $indoor, lap: $lap, altNames: $altNames, adaptability: $adaptability, affectionLevel: $affectionLevel, childFriendly: $childFriendly, dogFriendly: $dogFriendly, energyLevel: $energyLevel, grooming: $grooming, healthIssues: $healthIssues, intelligence: $intelligence, sheddingLevel: $sheddingLevel, socialNeeds: $socialNeeds, strangerFriendly: $strangerFriendly, vocalisation: $vocalisation, experimental: $experimental, hairless: $hairless, natural: $natural, rare: $rare, rex: $rex, suppressedTail: $suppressedTail, shortLegs: $shortLegs, wikipediaUrl: $wikipediaUrl, hypoallergenic: $hypoallergenic, referenceImageId: $referenceImageId)';
   }
 
   @override
@@ -673,6 +706,7 @@ class _$PetImpl implements _Pet {
         (other.runtimeType == runtimeType &&
             other is _$PetImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.cfaUrl, cfaUrl) || other.cfaUrl == cfaUrl) &&
             (identical(other.vetstreetUrl, vetstreetUrl) ||
@@ -742,6 +776,7 @@ class _$PetImpl implements _Pet {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
+        weight,
         name,
         cfaUrl,
         vetstreetUrl,
@@ -796,6 +831,7 @@ class _$PetImpl implements _Pet {
 abstract class _Pet implements Pet {
   const factory _Pet(
       {final String? id,
+      final Weight? weight,
       final String? name,
       final String? cfaUrl,
       final String? vetstreetUrl,
@@ -836,6 +872,8 @@ abstract class _Pet implements Pet {
 
   @override
   String? get id;
+  @override
+  Weight? get weight;
   @override
   String? get name;
   @override

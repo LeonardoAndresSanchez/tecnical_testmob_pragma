@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tecnical_testmob_pragma/models/weight.dart';
 
 part 'pets.freezed.dart';
 part 'pets.g.dart';
@@ -9,6 +10,7 @@ class Pet with _$Pet {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Pet({
     String? id,
+    Weight? weight,
     String? name,
     String? cfaUrl,
     String? vetstreetUrl,

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tecnical_testmob_pragma/models/pets.dart';
 
-import '../home.dart';
-
 class ItemList extends StatefulWidget {
-  const ItemList({super.key, required this.data, required this.typeView});
+  const ItemList({
+    super.key,
+    required this.data,
+    this.petImg,
+  });
 
   final Pet data;
-  final TypeView typeView;
+  final String? petImg;
 
   @override
   State<ItemList> createState() => _ItemListState();
@@ -49,11 +51,15 @@ class _ItemListState extends State<ItemList> {
           const SizedBox(
             height: 10,
           ),
-          SizedBox(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: const Image(
-              image: AssetImage('assets/cat.png'),
+          Hero(
+            tag: widget.data.name!,
+            transitionOnUserGestures: true,
+            child: SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: const Image(
+                image: AssetImage('assets/cat.png'),
+              ),
             ),
           ),
           const SizedBox(

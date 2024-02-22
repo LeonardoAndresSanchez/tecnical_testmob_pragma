@@ -16,12 +16,14 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'technical test mob',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          fontFamily: 'Quicksand',
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff42ca7e)),
           useMaterial3: true,
         ),
-        initialRoute: 'home',
+        initialRoute: 'splash',
         routes: appRoute,
       ),
     );

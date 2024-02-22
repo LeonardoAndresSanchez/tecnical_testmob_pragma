@@ -8,6 +8,9 @@ part of 'pets.dart';
 
 _$PetImpl _$$PetImplFromJson(Map<String, dynamic> json) => _$PetImpl(
       id: json['id'] as String?,
+      weight: json['weight'] == null
+          ? null
+          : Weight.fromJson(json['weight'] as Map<String, dynamic>),
       name: json['name'] as String?,
       cfaUrl: json['cfa_url'] as String?,
       vetstreetUrl: json['vetstreet_url'] as String?,
@@ -47,6 +50,7 @@ _$PetImpl _$$PetImplFromJson(Map<String, dynamic> json) => _$PetImpl(
 
 Map<String, dynamic> _$$PetImplToJson(_$PetImpl instance) => <String, dynamic>{
       'id': instance.id,
+      'weight': instance.weight,
       'name': instance.name,
       'cfa_url': instance.cfaUrl,
       'vetstreet_url': instance.vetstreetUrl,
