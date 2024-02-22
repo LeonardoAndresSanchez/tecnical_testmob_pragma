@@ -28,15 +28,29 @@ class _DetailPageState extends State<DetailPage> {
           ),
           child: Column(
             children: [
-              Hero(
-                tag: widget.pet!.name!,
-                child: SizedBox(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.45,
-                  child: Image(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      "https://cdn2.thecatapi.com/images/${widget.pet!.referenceImageId}.jpg",
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.50,
+                child: Hero(
+                  tag: widget.pet!.name!,
+                  transitionOnUserGestures: true,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: FadeInImage.assetNetwork(
+                      placeholder:
+                          'assets/cat.png', // Imagen de carga por defecto
+                      image:
+                          "https://cdn2.thecatapi.com/images/${widget.pet!.referenceImageId}.jpg",
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.50,
+                      imageErrorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                            'assets/cat.png'); // Imagen de error por defecto
+                      },
                     ),
                   ),
                 ),
@@ -73,7 +87,7 @@ class _DetailPageState extends State<DetailPage> {
           textAlign: TextAlign.left,
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
         ),
-        if (widget.pet!.altNames! != '') ...[
+        if (widget.pet?.altNames != null && widget.pet!.altNames != '') ...[
           Text(
             widget.pet!.altNames!,
             maxLines: 1,

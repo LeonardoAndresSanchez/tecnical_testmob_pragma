@@ -51,19 +51,30 @@ class _ItemListState extends State<ItemList> {
           const SizedBox(
             height: 10,
           ),
-          Hero(
-            tag: widget.data.name!,
-            transitionOnUserGestures: true,
-            child: Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: Image(
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: Hero(
+              tag: widget.data.name!,
+              transitionOnUserGestures: true,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/cat.png', // Imagen de carga por defecto
+                  image:
+                      "https://cdn2.thecatapi.com/images/${widget.data.referenceImageId}.jpg",
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                    "https://cdn2.thecatapi.com/images/${widget.data.referenceImageId}.jpg",
-                  )),
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  imageErrorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                        'assets/cat.png'); // Imagen de error por defecto
+                  },
+                ),
+              ),
             ),
           ),
           const SizedBox(
